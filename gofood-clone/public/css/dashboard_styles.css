@@ -1,0 +1,142 @@
+/* Global Styles */
+body {
+    font-family: "Rubik", sans-serif;
+    background: #f5f5f5;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* Navbar Styling */
+.navbar {
+    background: #008f10;
+    padding: 15px 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: white;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.navbar h1 {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.btn-logout {
+    background: #f44336;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s;
+}
+
+.btn-logout:hover {
+    background: #d32f2f;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Dashboard Container */
+.dashboard-container {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+/* Welcome Banner */
+.welcome-banner {
+    background: linear-gradient(90deg, #008f10, #00c853);
+    color: white;
+    padding: 40px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.welcome-banner h2 {
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.welcome-banner p {
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+/* Menu Grid */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+/* Menu Card */
+.menu-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-decoration: none;
+    color: #2d3436;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.menu-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    background: #008f10;
+    color: white;
+}
+
+.menu-icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+    color: #008f10;
+}
+
+.menu-card h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.menu-card p {
+    font-size: 14px;
+    color: #666;
+}
+
+/* Special styling for logout card */
+.menu-card.logout {
+    background: linear-gradient(135deg, #ff7675 0%, #d63031 100%);
+}
+
+.menu-card.logout button {
+    width: 100%;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    text-align: left;
+    padding: 0;
+}
+
+.menu-card.logout h3,
+.menu-card.logout p {
+    color: white;
+}
+
+.menu-card.logout:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(214, 48, 49, 0.3);
+}

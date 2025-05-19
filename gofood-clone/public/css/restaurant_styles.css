@@ -1,0 +1,456 @@
+/* Variabel Warna (Sesuai Gambar GoFood Clone) */
+:root {
+    --primary-color: #00aa13;
+    --secondary-color: #f04e4e;
+    --danger-color: #f44336;
+    --text-color: #212121;
+    --light-text-color: #555;
+    --background-color: #f8f8f8;
+    --card-background: #fff;
+    --border-color: #ddd;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --shadow-color-hover: rgba(0, 0, 0, 0.2);
+    --gojek-black: #000000;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    padding-top: 60px;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 15px;
+}
+
+/* Navbar */
+.navbar {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px 0;
+    box-shadow: 0 2px 8px var(--shadow-color-hover);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.navbar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-brand {
+    color: white;
+    text-decoration: none;
+    font-size: 1.5em;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+}
+
+.navbar-brand i {
+    margin-right: 5px;
+    color: white;
+}
+
+.navbar-links {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.nav-link i {
+    margin-right: 5px;
+}
+
+/* Tombol */
+.btn {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease, opacity 0.3s ease,
+        transform 0.1s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.btn-secondary {
+    /* Dashboard button */
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.btn-danger {
+    /* Logout button */
+    background-color: var(--secondary-color); /* Orange */
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #ec971f; /* Darker Orange */
+}
+
+.hero-banner {
+    background: linear-gradient(to bottom, var(--primary-color), #00880f);
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+    position: relative;
+    margin-top: 20px;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    overflow: hidden;
+    box-shadow: 0 6px 12px var(--shadow-color);
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0;
+    z-index: 1;
+    position: relative;
+    color: white;
+}
+
+.hero-content h1 {
+    font-size: 2.2em;
+    margin-bottom: 15px;
+    font-weight: 700;
+    color: white;
+}
+
+.hero-content p {
+    font-size: 1em;
+    margin-bottom: 30px;
+    opacity: 1;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Search Container */
+.search-container {
+    display: flex;
+    align-items: center;
+    max-width: 500px;
+    margin: 20px auto 0 auto;
+    background-color: var(--card-background);
+    border-radius: 50px;
+    padding: 12px 25px;
+    box-shadow: 0 2px 8px var(--shadow-color); /* Shadow search bar */
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+    border: 1px solid var(--border-color); /* Border default */
+}
+
+.search-container:focus-within {
+    box-shadow: 0 4px 12px rgba(0, 170, 19, 0.4);
+    border-color: var(--primary-color);
+}
+
+.search-container input[type="text"] {
+    border: none;
+    outline: none;
+    padding: 5px;
+    flex-grow: 1;
+    font-size: 1em;
+    color: var(--text-color);
+    background: none;
+}
+
+.search-container .search-icon {
+    color: var(--light-text-color);
+    margin-right: 15px;
+    font-size: 1.2em;
+}
+
+/* Main Content */
+.section-title {
+    font-size: 2.2em;
+    margin: 40px auto 30px auto;
+    text-align: center;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+/* Restaurants Grid */
+.restaurants-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+    padding-bottom: 40px;
+    margin-top: 20px;
+}
+
+/* Restaurant Card */
+.restaurant-card {
+    background-color: var(--card-background);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px var(--shadow-color); /* Shadow kartu lebih halus */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    /* Animation properties */
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease forwards;
+    animation-delay: var(--animation-delay, 0s);
+}
+
+/* Keyframes for fade-in and slide-up animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Enhanced Card Hover Effect */
+.restaurant-card:hover {
+    transform: translateY(-10px) rotateZ(1deg); /* Naik lebih tinggi + sedikit rotasi */
+    box-shadow: 0 15px 25px var(--shadow-color-hover); /* Bayangan lebih besar dan kuat saat hover */
+}
+
+.card-image {
+    height: 200px;
+    overflow: hidden;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease; /* Transisi zoom gambar */
+}
+
+.restaurant-card:hover .card-image img {
+    transform: scale(1.05); /* Zoom gambar saat hover */
+}
+
+.card-content {
+    padding: 15px;
+    flex-grow: 1;
+}
+
+.card-content h3 {
+    font-size: 1.4em;
+    margin-bottom: 8px;
+    color: var(--text-color);
+    font-weight: 700;
+}
+
+.card-info {
+    font-size: 0.95em;
+    color: var(--light-text-color);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+}
+
+.card-info .icon {
+    margin-right: 10px;
+    color: var(--primary-color);
+    font-size: 1.1em;
+}
+
+.card-footer {
+    padding: 15px;
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+}
+
+.btn-primary {
+    /* Tombol Primary (Lihat Menu) */
+    background-color: var(--primary-color); /* Hijau */
+    color: white;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.btn-primary:hover {
+    background-color: #00880f; /* Hijau Lebih Gelap */
+    transform: translateY(-2px); /* Sedikit naik saat hover */
+}
+
+.btn-details {
+    width: 100%;
+}
+
+/* No Results Message */
+.no-results {
+    text-align: center;
+    padding: 60px 20px;
+    grid-column: 1 / -1;
+    color: var(--light-text-color);
+    font-size: 1.4em;
+}
+
+.no-results i {
+    margin-top: 20px;
+    color: var(--border-color);
+    font-size: 4em;
+    opacity: 0.7;
+}
+
+/* Footer */
+.footer {
+    background-color: var(--gojek-black);
+    color: white;
+    text-align: center;
+    padding: 25px 0;
+    margin-top: 50px;
+    font-size: 0.9em;
+}
+
+/* Responsif Dasar */
+@media (max-width: 768px) {
+    body {
+        padding-top: 80px;
+    }
+    .navbar-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .navbar-brand {
+        margin-bottom: 10px;
+    }
+
+    .navbar-links {
+        flex-direction: column;
+        gap: 5px;
+        width: 100%;
+    }
+
+    .nav-link,
+    .btn {
+        width: calc(100% - 30px);
+        text-align: center;
+        justify-content: center;
+        margin: 0 auto;
+    }
+
+    .hero-banner {
+        padding: 40px 15px;
+        margin-top: 15px;
+        border-bottom-left-radius: 30px;
+        border-bottom-right-radius: 30px;
+        border-top-left-radius: 30px;
+        border-top-right-radius: 30px;
+    }
+
+    .hero-content {
+        padding: 0;
+        margin: 0 auto;
+    }
+
+    .hero-content h1 {
+        font-size: 1.8em;
+    }
+
+    .hero-content p {
+        font-size: 0.9em;
+    }
+
+    .search-container {
+        width: 95%;
+        padding: 10px 20px;
+    }
+
+    .search-container input[type="text"] {
+        font-size: 1em;
+    }
+
+    .restaurants-grid {
+        grid-template-columns: 1fr;
+        margin-top: 15px;
+    }
+
+    .restaurant-card {
+        width: 100%;
+        margin: 0 auto;
+        animation-delay: 0s !important;
+        /* Nonaktifkan efek hover yang kompleks di mobile */
+        &:hover {
+            transform: translateY(-5px); /* Hanya sedikit naik */
+            box-shadow: 0 8px 16px var(--shadow-color-hover);
+        }
+
+        .card-image img {
+            transform: scale(1);
+        }
+    }
+
+    .section-title {
+        font-size: 1.8em;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 1.6em;
+    }
+
+    .hero-content p {
+        font-size: 0.8em;
+    }
+
+    .search-container {
+        padding: 8px 15px;
+    }
+
+    .search-container input[type="text"] {
+        font-size: 0.9em;
+    }
+}

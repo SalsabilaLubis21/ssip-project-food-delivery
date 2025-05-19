@@ -1,0 +1,600 @@
+/* Base styles */
+:root {
+    --green-primary: #00aa13;
+    --green-secondary: #008f10;
+    --green-dark: #007d0e;
+    --background: #ffffff; /* Background color */
+    --foreground: #0d0d0d;
+    --card: #ffffff;
+    --card-foreground: #0d0d0d;
+    --border: #e2e8f0;
+    --input: #e2e8f0;
+    --ring: #0d0d0d;
+    --radius: 0.5rem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    /* Pastikan tinggi html dan body memungkinkan body mengisi viewport jika konten pendek */
+    /* height: 100%; */ /* Opsi jika min-height di body dihapus dan ingin body mengisi html */
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+
+    /* Gradient awal di body. Ini hanya nilai default sebelum animasi berjalan */
+    background: linear-gradient(
+            to right,
+            rgba(16, 194, 84, 0) 0%,
+            rgba(217, 206, 206, 0.459) 50%,
+            /* Opasitas penuh (0.5) saat default/di kanan */
+                rgba(255, 255, 255, 0) 100%
+        ),
+        linear-gradient(135deg, #028010 0%, #008f10 35%, #e6ffee 100%);
+
+    background-color: #e6ffee; /* Warna akhir gradient sebagai fallback */
+
+    color: var(--foreground);
+    background-size: 200% 100%, cover;
+
+    position: relative;
+    overflow-x: hidden;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.food-item,
+.food-pattern {
+    display: none !important;
+}
+/* --- Akhir aturan penyembunyian tambahan --- */
+
+/* Container */
+/* Container ini membungkus konten utama (header, role grid) */
+.container {
+    display: flex; /* Mengatur tata letak anak-anak sebagai flexbox */
+    flex-direction: column; /* Menyusun anak-anak secara vertikal */
+    align-items: center; /* Memusatkan anak-anak secara horizontal */
+    /* --- Padding container: Top 0, Right 1rem, Bottom 1rem, Left 1rem --- */
+    /* Padding ini ada di dalam batas container */
+    padding: 0 1rem 1rem 1rem;
+    /* --------------------------------------------------------------- */
+    position: relative; /* Penting untuk elemen yang diposisikan absolute di dalamnya (misalnya role-image-container) */
+    z-index: 10; /* Penting agar container di atas background body dan efek kilapan (z-index 5) */
+    max-width: 1200px; /* Batasi lebar maksimal container */
+    width: 100%; /* Pastikan container mengambil lebar penuh hingga max-width */
+    /* --- Pastikan margin-top 0 pada container --- */
+    margin-top: 0 !important; /* Kembalikan ke 0 */
+    /* ----------------------------------------------------------------------- */
+
+    /* Jika Anda ingin gradient HANYA di sini (tidak di ruang kosong bawah), */
+    /* pindahkan properti background dari body ke aturan .container ini */
+    /* Contoh (komentari background di body jika ini diaktifkan): */
+    /* background: linear-gradient(135deg, #00aa13 0%, #008f10 35%, #e6ffee 100%); */
+    /* background-color: #e6ffee; */ /* Fallback */
+    /* overflow: hidden; */ /* Jika perlu clipping background sesuai border-radius container */
+}
+
+/* Header */
+/* Aturan untuk header di dalam container */
+.header {
+    text-align: center;
+    margin-bottom: 3rem; /* Margin ini menciptakan ruang di bawah header */
+    /* --- Margin-top 0 sudah ditambahkan sebelumnya --- */
+    margin-top: 0 !important; /* Tambahkan !important */
+    /* --- TAMBAHAN: Pastikan tidak ada padding-top pada header --- */
+    padding-top: 0 !important;
+    /* -------------------------------------------------------- */
+}
+
+.main-title {
+    font-family: "Poppins", sans-serif; /* Pastikan ini ada dan namanya benar */
+    font-size: 3em;
+    font-weight: 900; /* Pastikan ini 900 */
+    color: #ffffff;
+    margin-bottom: 10px;
+    text-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    letter-spacing: 0.08em;
+}
+
+@media (max-width: 600px) {
+    .main-title {
+        font-size: 2.2em;
+    }
+    .sub-title {
+        font-size: 1.1em;
+    }
+}
+
+.gofood-logo {
+    display: flex; /* Tetap flex */
+    align-items: center; /* Tetap flex */
+    justify-content: center;
+    margin-bottom: 1.5rem; /* Margin ini menciptakan ruang di bawah logo */
+    /* --- TAMBAHAN TERAKHIR: Coba margin negatif untuk kompensasi sisa ruang --- */
+    margin-top: -100px !important; /* Coba nilai negatif kecil di sini! Sesuaikan nilainya */
+    /* ----------------------------------------------------------------------- */
+    /* --- TAMBAHAN: Pastikan tidak ada padding-top pada gofood-logo --- */
+    padding-top: 0 !important;
+    /* ------------------------------------------------------------- */
+    animation: slide-down 0.5s ease-out; /* Biarkan animasi slide-down header/logo jika diinginkan */
+}
+
+/* --- Aturan untuk elemen di dalam logo dan judul/subjudul --- */
+/* Hanya apply margin/padding top 0 dan line-height (vertical-align hanya jika berlaku) */
+
+/* Elemen pertama di dalam header (.gofood-logo) - Ini adalah flex item */
+.header > *:first-child {
+    /* margin-top: 0 !important; */ /* Sudah diatur di .gofood-logo */
+    padding-top: 0 !important;
+    /* vertical-align tidak berlaku untuk display: flex */
+}
+
+/* Elemen pertama di dalam gofood-logo (.logo-container) - Ini adalah flex item */
+.gofood-logo > *:first-child {
+    margin-top: 0 !important;
+    /* padding-top: 0 !important; */ /* Dihapus, ditangani langsung di .logo-container */
+    /* vertical-align tidak berlaku untuk display: flex */
+}
+
+/* Semua elemen di dalam logo-container (.logo-icon, .logo-text) */
+.logo-container > * {
+    margin-top: 0 !important;
+    /* padding-top: 0 !important; */ /* Dihapus, ditangani langsung di .logo-container */
+    line-height: 1 !important; /* Minimal line height */
+    /* vertical-align berlaku untuk teks, vertical-align berlaku jika inline/inline-block/flex item */
+    /* vertical-align: top !important; */ /* Dihapus dari selector gabungan */
+}
+
+/* SVG di dalam logo-icon */
+.logo-icon > svg {
+    margin-top: 0 !important;
+    /* padding-top: 0 !important; */ /* Dihapus, ditangani langsung di .logo-icon */
+    line-height: 1 !important; /* Minimal line height */
+    /* vertical-align tidak berlaku untuk display: block (yang kita terapkan di .logo-icon svg) */
+}
+
+.logo-container {
+    background-color: var(--green-primary);
+    color: white;
+    border-radius: 0.5rem;
+    /* --- MODIFIKASI UTAMA: SET padding-top ke 0 DI SINI --- */
+    padding: 0 1rem 0.5rem 1rem !important; /* Top 0, Right 1rem, Bottom 0.5rem, Left 1rem */
+    /* ---------------------------------------------------- */
+    display: flex; /* Tetap flex untuk layout internal */
+    align-items: center; /* Tetap flex untuk layout internal */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* Pastikan margin-top 0 */
+    margin-top: 0 !important;
+}
+
+.logo-icon {
+    margin-right: 0.5rem;
+    background-color: white;
+    border-radius: 50%;
+    padding: 0.25rem; /* Padding internal icon, biarkan jika diinginkan */
+    display: block !important; /* Tetapkan sebagai blok */
+    /* vertical-align tidak berlaku untuk display: block */
+    /* Pastikan margin/padding top 0 */
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+.logo-icon svg {
+    display: block !important; /* Tetapkan sebagai blok */
+    /* vertical-align tidak berlaku untuk display: block */
+    /* Pastikan margin/padding top 0 */
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+.logo-text {
+    font-weight: 700;
+    font-size: 1.25rem;
+    /* Pastikan margin/padding top 0 jika elemen ini adalah pertama di parent */
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    line-height: 1 !important; /* Minimal line height */
+    /* vertical-align berlaku untuk inline/inline-block/flex items, .logo-text adalah flex item */
+    vertical-align: top !important; /* Atur vertical alignment */
+}
+
+.main-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1a202c;
+    margin-bottom: 1rem;
+    /* Pastikan margin/padding top 0 */
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    line-height: 1 !important; /* Minimal line height */
+    /* vertical-align tidak berlaku untuk display: block */
+    animation: slide-down 0.5s ease-out 0.2s both;
+}
+
+.subtitle {
+    font-size: 1.25rem;
+    color: #4a5568;
+    /* Pastikan margin/padding top 0 */
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    line-height: 1 !important; /* Minimal line height */
+    /* vertical-align tidak berlaku untuk display: block */
+    animation: slide-down 0.5s ease-out 0.3s both;
+}
+/* --- Akhir Revisi Aturan --- */
+
+/* --- Keyframes untuk animasi header/grid (jika diinginkan, biarkan) --- */
+@keyframes slide-down {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Role Grid */
+/* Aturan untuk grid kartu peran */
+.role-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Satu kolom secara default */
+    gap: 2rem; /* Jarak antar item grid */
+    width: 100%; /* Ambil lebar penuh container */
+    animation: slide-up 0.5s ease-out 0.4s both; /* Animasi slide-up */
+    /* Pastikan margin-top 0 jika elemen ini adalah pertama di parent setelah elemen di atasnya */
+    margin-top: 0 !important; /* Added for completeness */
+}
+
+/* Media query untuk tampilan di layar yang lebih lebar */
+@media (min-width: 768px) {
+    .role-grid {
+        grid-template-columns: repeat(3, 1fr); /* Tiga kolom di layar lebar */
+    }
+}
+
+/* Role Card */
+/* Aturan untuk setiap kartu peran */
+.role-card {
+    position: relative; /* Penting untuk posisi absolute anak-anaknya */
+    border-radius: 0.75rem; /* Sudut membulat */
+    overflow: hidden; /* Memastikan konten di dalam kartu (termasuk gambar) terpotong sesuai border-radius */
+    height: 24rem; /* Tinggi kartu */
+    cursor: pointer; /* Kursor pointer saat diarahkan */
+    background-color: rgba(
+        255,
+        255,
+        255,
+        0.8
+    ); /* Latar belakang semi-transparan */
+    backdrop-filter: blur(4px); /* Efek blur di belakang */
+    transition: transform 0.3s ease; /* Transisi saat hover */
+    /* Box shadow untuk efek bayangan */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25),
+        /* Bayangan utama */ 0 4px 8px -2px rgba(0, 0, 0, 0.15); /* Bayangan kedua */
+}
+
+.role-card:hover {
+    transform: translateY(-10px); /* Gerak naik saat hover */
+}
+
+.role-link {
+    display: block; /* Membuat link mengisi seluruh kartu */
+    height: 100%;
+    text-decoration: none; /* Hapus garis bawah link */
+}
+
+/* Konten saat tidak dihover (gradient) */
+.role-content {
+    position: absolute; /* Mengisi seluruh ruang kartu */
+    inset: 0;
+    background: linear-gradient(
+        to bottom right,
+        var(--green-primary),
+        var(--green-secondary)
+    );
+    transition: all 0.3s ease; /* Transisi background */
+}
+
+/* Konten saat dihover (gradient berubah) */
+.role-card:hover .role-content {
+    background: linear-gradient(
+        to bottom right,
+        var(--green-secondary),
+        var(--green-dark)
+    );
+}
+
+/* Kontainer gambar di dalam kartu */
+.role-image-container {
+    position: absolute; /* Mengisi seluruh ruang kartu */
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Transisi saat hover */
+    /* Menambahkan overflow: hidden di container gambar bisa membantu memastikan clipping */
+    overflow: hidden; /* Memastikan gambar di dalamnya terpotong sesuai border-radius */
+    /* Tambahkan border-radius di container agar clipping terjadi di level ini */
+    border-radius: 0.75rem; /* Sudut membulat, Cocokkan dengan border-radius .role-card */
+}
+
+/* Kontainer gambar saat dihover */
+.role-card:hover .role-image-container {
+    opacity: 0; /* Menghilang saat dihover */
+    transform: scale(0.8); /* Mengecil saat dihover */
+}
+
+/* Gambar di dalam kontainer gambar */
+.role-image {
+    width: 100%; /* Mengisi lebar container */
+    height: 100%; /* Mengisi tinggi container */
+    object-fit: cover; /* Memastikan gambar menutupi area tanpa distorsi */
+    /* Hapus padding ini agar gambar mengisi penuh container seperti yang kita perbaiki sebelumnya */
+    /* padding: 1rem; */
+    /* Border-radius bisa dihapus dari sini atau dipertahankan, tapi clipping utama dilakukan di container */
+    /* border-radius: 0.75rem; */
+}
+
+/* Teks di dalam kartu */
+.role-text {
+    position: absolute; /* Mengisi seluruh ruang kartu */
+    inset: 0;
+    display: flex; /* Mengatur tata letak teks sebagai flexbox */
+    flex-direction: column; /* Menyusun teks secara vertikal */
+    align-items: center; /* Memusatkan teks secara horizontal */
+    justify-content: center; /* Memusatkan teks secara vertikal */
+    padding: 1.5rem; /* Padding di sekitar teks */
+    color: white; /* Warna teks putih */
+    opacity: 0; /* Tersembunyi secara default */
+    transform: scale(0.9); /* Sedikit mengecil secara default */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Transisi saat hover */
+}
+
+/* Teks saat dihover */
+.role-card:hover .role-text {
+    opacity: 1; /* Muncul saat dihover */
+    transform: scale(1); /* Kembali ke ukuran normal saat dihover */
+}
+
+/* Judul di dalam teks kartu */
+.role-title {
+    font-size: 1.875rem; /* Ukuran font judul */
+    font-weight: 700; /* Ketebalan font */
+    margin-bottom: 1rem; /* Jarak bawah judul */
+}
+
+/* Deskripsi di dalam teks kartu */
+.role-description {
+    font-size: 1.25rem; /* Ukuran font deskripsi */
+    text-align: center; /* Teks rata tengah */
+    max-width: 20rem; /* Lebar maksimal deskripsi */
+    opacity: 0.9; /* Sedikit transparan */
+}
+
+/* --- Keyframes untuk animasi header/grid (jika diinginkan, biarkan) --- */
+/* Digunakan untuk animasi masuk elemen */
+@keyframes slide-down {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Login Page Styles */
+/* Gaya untuk halaman login (jika ada halaman login terpisah dengan class .login-container) */
+.login-container {
+    max-width: 28rem;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(4px);
+    border-radius: 0.75rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+        0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    animation: fade-in 0.5s ease-out; /* Biarkan animasi fade-in jika diinginkan */
+}
+
+.login-header {
+    background: linear-gradient(
+        to bottom right,
+        var(--green-primary),
+        var(--green-secondary)
+    );
+    padding: 1.5rem;
+    color: white;
+    text-align: center;
+}
+
+.role-icon {
+    width: 6rem;
+    height: 6rem;
+    margin: 1rem auto;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.role-icon img {
+    width: 5rem;
+    height: 5rem;
+    object-fit: contain;
+}
+
+.login-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.login-form-container {
+    padding: 1.5rem;
+}
+
+.success-message {
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    background-color: #d1fae5;
+    color: #047857;
+    border-radius: 0.375rem;
+}
+
+.error-message {
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    background-color: #fee2e2;
+    color: #b91c1c;
+    border-radius: 0.375rem;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #4b5563;
+}
+
+input {
+    padding: 0.5rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.375rem;
+    background-color: rgba(255, 255, 255, 0.8);
+    font-size: 0.875rem;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--green-primary);
+    box-shadow: 0 0 0 2px rgba(0, 170, 19, 0.2);
+}
+
+.login-button {
+    padding: 0.5rem;
+    background-color: var(--green-primary);
+    color: white;
+    border: none;
+    border-radius: 0.375rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.login-button:hover {
+    background-color: var(--green-secondary);
+}
+
+.login-footer {
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+.forgot-password {
+    margin-bottom: 0.75rem;
+}
+
+.forgot-password a {
+    font-size: 0.875rem;
+    color: var(--green-primary);
+    text-decoration: none;
+}
+
+.register-link {
+    font-size: 0.875rem;
+    color: #4b5563;
+}
+
+.register-link a {
+    color: var(--green-primary);
+    text-decoration: none;
+}
+
+.back-link {
+    margin-top: 1rem;
+}
+
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.875rem;
+    color: #4b5563;
+    text-decoration: none;
+}
+
+.back-button:hover {
+    color: #1f2937;
+}
+
+.back-button svg {
+    margin-right: 0.5rem;
+}
+
+/* --- Keyframes untuk halaman login (jika diinginkan, biarkan) --- */
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* From-green classes (digunakan untuk background gradient pada role-content) */
+.from-green-primary {
+    background: linear-gradient(
+        to bottom right,
+        var(--green-primary),
+        var(--green-secondary)
+    );
+}
+
+.from-green-secondary {
+    background: linear-gradient(
+        to bottom right,
+        var(--green-secondary),
+        var(--green-dark)
+    );
+}
+
+/* Text color classes */
+.text-green-primary {
+    color: var(--green-primary);
+}
+
+/* Button color classes */
+.bg-green-primary {
+    background-color: var(--green-primary);
+}
+
+.hover\:bg-green-secondary:hover {
+    background-color: var(--green-secondary);
+}

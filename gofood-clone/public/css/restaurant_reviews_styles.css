@@ -1,0 +1,113 @@
+/* Global Styles */
+body {
+    font-family: "Poppins", sans-serif;
+    background: #f8f9fa;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+.navbar {
+    background: #00aa13;
+    padding: 15px 20px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navbar h1 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.btn-back {
+    background: white;
+    color: #00aa13;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.btn-back:hover {
+    background: #d4f8d4;
+    color: #008f10;
+}
+
+.restaurant-info {
+    text-align: center;
+    padding: 20px;
+    background: white;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.reviews-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.review-card {
+    background: white;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.review-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.user-avatar {
+    background: #00aa13;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-info h4 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.user-info p {
+    margin: 0;
+    font-size: 12px;
+    color: #777;
+}
+
+.review-rating {
+    text-align: right;
+}
+
+.review-body {
+    font-size: 14px;
+    color: #555;
+}
+
+.review-date {
+    font-size: 12px;
+    color: #999;
+    margin-top: 10px;
+}
+
+.no-reviews {
+    text-align: center;
+    font-size: 16px;
+    color: #999;
+}

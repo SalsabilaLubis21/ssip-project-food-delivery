@@ -1,0 +1,267 @@
+/* Import Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* General Styles */
+body {
+    font-family: "Poppins", sans-serif;
+    background-color: #f6f9fc;
+    color: #2d3436;
+    line-height: 1.6;
+}
+
+/* Navbar */
+.navbar {
+    background: #00aa13; /* Warna Hijau Gojek */
+    padding: 15px;
+    text-align: center;
+}
+
+.navbar a {
+    color: white;
+    font-size: 18px;
+    text-decoration: none;
+    margin: 0 15px;
+}
+
+/* Order Cards */
+.order-card {
+    background: white;
+    padding: 15px;
+    margin: 15px auto;
+    width: 90%;
+    border-radius: 12px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+}
+
+.order-card:hover {
+    transform: scale(1.03);
+}
+
+.order-card h2 {
+    color: #00aa13;
+    margin-bottom: 10px;
+}
+
+.order-card p {
+    font-size: 14px;
+    color: #555;
+}
+
+/* Order Button */
+.btn-order {
+    display: inline-block;
+    padding: 12px 18px;
+    background-color: #00aa13;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.btn-order:hover {
+    background-color: #008f11;
+}
+
+.orders-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+}
+
+/* Header Styles */
+h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #00880d;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+h2::before {
+    content: "📋";
+    font-size: 1.5rem;
+}
+
+/* Success Message */
+.success {
+    background: #00880d15;
+    color: #00880d;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    border-left: 4px solid #00880d;
+    font-size: 0.9rem;
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+}
+
+thead {
+    background: #00880d;
+    color: white;
+}
+
+th {
+    font-weight: 500;
+    text-align: left;
+    padding: 1rem;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+td {
+    padding: 1rem;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 0.95rem;
+    color: #4a4a4a;
+}
+
+tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+/* Status Styles */
+td:nth-child(4) {
+    font-weight: 500;
+}
+
+td:nth-child(4)[data-status="pending"] {
+    color: #f39c12;
+}
+
+td:nth-child(4)[data-status="processing"] {
+    color: #3498db;
+}
+
+td:nth-child(4)[data-status="completed"] {
+    color: #00880d;
+}
+
+td:nth-child(4)[data-status="cancelled"] {
+    color: #e74c3c;
+}
+
+/* Price Column */
+td:nth-child(3) {
+    font-weight: 600;
+    color: #2d3436;
+}
+
+/* Action Buttons */
+td:last-child {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+td a {
+    text-decoration: none;
+    color: #00880d;
+    font-weight: 500;
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    border: 1px solid #00880d;
+    transition: all 0.3s ease;
+}
+
+td a:hover {
+    background: #00880d;
+    color: white;
+}
+
+td form {
+    display: inline;
+}
+
+td button {
+    background: #fff;
+    color: #e74c3c;
+    border: 1px solid #e74c3c;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    font-family: "Poppins", sans-serif;
+    transition: all 0.3s ease;
+}
+
+td button:hover {
+    background: #e74c3c;
+    color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .orders-container {
+        padding: 0 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    th,
+    td {
+        padding: 0.75rem;
+    }
+
+    td:last-child {
+        min-width: 200px;
+    }
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: #666;
+}
+
+/* Loading State */
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+}
+
+.loading::after {
+    content: "";
+    width: 30px;
+    height: 30px;
+    border: 2px solid #00880d;
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
